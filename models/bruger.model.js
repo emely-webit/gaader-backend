@@ -34,4 +34,14 @@ brugerSchema.pre('save', async function (next) {
     next()
 });
 
+// Verification af passwordet der er hashet
+brugerSchema.methods.comparePassword = function (indtastetPassword, cb){
+    
+    bcrypt.compare(indtastetPassword, this.password, function(err, isMatch){
+
+        if(err) return cb(err);
+        cb(null, isMatch);
+    });
+}
+
 module.exports = mongoose.model('BrugerFil', brugerSchema);
