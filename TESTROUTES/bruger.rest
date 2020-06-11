@@ -1,0 +1,36 @@
+# Hent alle bruger
+GET http://localhost:5024/bruger/admin
+
+###
+
+# Hent udvalgt bruger
+GET http://localhost:5024/bruger/admin/5ee0b1dbc009874040ce495e
+
+###
+
+# Opret ny bruger
+POST http://localhost:5024/bruger/admin
+Content-Type: application/json
+
+{
+    "brugernavn": "sarahP",
+    "email": "sarah@gmail.com",
+    "password": "hemmelig"
+}
+
+###
+
+# Ret en bruger
+
+PATCH http://localhost:5024/bruger/admin/5ee0c2d640239a3984871960
+Content-Type: application/json
+
+{
+    "password": "hemmelig"
+}
+
+###
+
+# Slet en bruger
+
+DELETE http://localhost:5024/bruger/admin/5ee0b1dbc009874040ce495e

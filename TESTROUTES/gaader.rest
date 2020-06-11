@@ -1,0 +1,35 @@
+# Hent alle gaader
+GET http://localhost:5024/gaader
+
+###
+
+# Hent udvalgt gaader
+GET http://localhost:5024/gaader/5ee0b366c009874040ce4960
+
+###
+
+# Opret ny gaader
+POST http://localhost:5024/gaader/admin
+Content-Type: application/json
+
+{
+    "gaade": "Hvorfor kan en sæl ikke blive bryllupsfotograf?",
+    "svar": "Fordi den kun tager sælfies :)"
+}
+
+###
+
+# Ret en gaader
+
+PATCH http://localhost:5024/gaader/admin/5ee0b366c009874040ce4960
+Content-Type: application/json
+
+{
+    "gaade": "Hvad gør Spiderman, efter han har drukket sin kaffe?"
+}
+
+###
+
+# Slet en gaader
+
+DELETE http://localhost:5024/gaader/admin/5ee0b366c009874040ce4960
