@@ -32,16 +32,16 @@ app.use(express.json());
 
 /** HER SKAL SESSION VÆRE */
 
-var FileStore = require('session-file-store')(session);
+// var FileStore = require('session-file-store')(session);
  
-var fileStoreOptions = {};
+// var fileStoreOptions = {};
 
 // Denne skal kun være der når koden skal op og ligge på heruko
 // app.set('trust proxy', 1)
 
 app.use(session({
     name: process.env.SESS_NAME,
-    store: new FileStore(fileStoreOptions),
+    // store: new FileStore(fileStoreOptions),
     resave: false,
     saveUninitialized: false,
     secret: process.env.SESS_SECRET,
