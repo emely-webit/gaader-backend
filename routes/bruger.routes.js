@@ -3,7 +3,7 @@ const router = express.Router();
 const BrugerFil = require('../models/bruger.model');
 
 // Router til at få alle bruger
-router.get('/admin', async (req, res) => {
+router.get('/', async (req, res) => {
     try{
 
         const brugere = await BrugerFil.find();
@@ -16,7 +16,7 @@ router.get('/admin', async (req, res) => {
 })
 
 // Router til at få en enkelt bruger
-router.get('/admin/:id', getBruger, (req, res) => {
+router.get('/:id', getBruger, (req, res) => {
 
     res.json(res.enBruger);
 })
@@ -25,7 +25,7 @@ router.get('/admin/:id', getBruger, (req, res) => {
 /** ADMIN ROUTERS */
 
 // Router til at oprette en bruger
-router.post('/admin', async (req, res) => {
+router.post('/', async (req, res) => {
     const bruger = new BrugerFil({
         brugernavn: req.body.brugernavn,
         email: req.body.email,
@@ -40,7 +40,7 @@ router.post('/admin', async (req, res) => {
 })
 
 // Router til at ændre en bruger
-router.patch('/admin/:id', getBruger, async (req, res) => {
+router.patch('/:id', getBruger, async (req, res) => {
     
     if(req.body.brugernavn != null){
         res.enBruger.brugernavn = req.body.brugernavn;
@@ -60,7 +60,7 @@ router.patch('/admin/:id', getBruger, async (req, res) => {
 })
 
 // Router til at slette en bruger
-router.delete('/admin/:id', getBruger, async (req, res) => {
+router.delete('/:id', getBruger, async (req, res) => {
     
     try{
 

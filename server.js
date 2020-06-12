@@ -52,6 +52,17 @@ app.use(session({
     }
 }))
 
+/** TJEK OM MAN HAR ADGANG TIL AT ÆNDRE, SLETTE OG OPRETTE GÅDER - GØRES VIA ADMIN */
+app.use('*/admin', (req, res, next) => {
+    
+    // Her tester den - hvis IKKE der er en session (man er logget ind), så får man en 401 fejl.
+    if(!req.session.userId){
+
+        return res.status(401).json({ message: "Du har ikke adgang - du skal være logget ind" });
+    }
+    // Hvis man så var logget ind, går den videre til næste function også kan man fortsætte med det man er igang med.
+    next();
+})
 
 /** ROUTER */
 
@@ -61,7 +72,7 @@ app.use('/gaader', gaaderRouter);
 
 // BRUGER http://localhost:5024/bruger
 const brugerRouter = require('./routes/bruger.routes');
-app.use('/bruger', brugerRouter);
+app.use('/admin/bruger', brugerRouter);
 
 // AUTH http://localhost:5024/auth
 const authRouter = require('./routes/auth.routes');
