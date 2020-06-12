@@ -36,6 +36,7 @@ var FileStore = require('session-file-store')(session);
  
 var fileStoreOptions = {};
 
+// Denne skal kun være der når koden skal op og ligge på heruko
 // app.set('trust proxy', 1)
 
 app.use(session({

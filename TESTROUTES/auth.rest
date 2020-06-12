@@ -9,3 +9,7 @@ Content-Type: application/json
 ###
 
 GET http://localhost:5024/auth/logout
+
+###
+
+GET http://localhost:5024/auth/loggedin
