@@ -8,6 +8,9 @@ const PORT = process.env.PORT;
 
 const session = require('express-session');
 
+/** MONGO DB */
+const MongoStore = require('connect-mongo')(session);
+
 const TWO_HOURS = 1000 * 60 * 60 *2;
 
 // const {
@@ -41,7 +44,10 @@ app.use(express.json());
 
 app.use(session({
     name: process.env.SESS_NAME,
+    // Denne skal bruges hvis man vil bruge session-file-store
     // store: new FileStore(fileStoreOptions),
+    // Hvis man skal bruge mongo
+    store: new MongoStore({ mongooseConnection: db }),
     resave: false,
     saveUninitialized: false,
     secret: process.env.SESS_SECRET,
