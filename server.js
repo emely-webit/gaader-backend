@@ -23,7 +23,11 @@ const TWO_HOURS = 1000 * 60 * 60 *2;
 const IN_PROD = process.env.NODE_ENV === 'production'
 
 /** CONNECTION TIL MONGO DB*/
-mongoose.connect(process.env.DATABASE_URL, { useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true });
+// Local-database connection
+// mongoose.connect(process.env.DATABASE_URL, { useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true });
+// Atlas-database connection
+mongoose.connect(process.env.DATABASE_URL_ATLAS, { useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true });
+
 const db = mongoose.connection;
 db.on('error', (error) => console.log(error));
 db.once('open', () => console.log("Connected to database"));
