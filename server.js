@@ -13,12 +13,6 @@ const MongoStore = require('connect-mongo')(session);
 
 const TWO_HOURS = 1000 * 60 * 60 *2;
 
-// const {
-//     NODE_ENV = 'development',
-//     SESS_NAME = 'sid',
-//     SESS_SECRET = 'ssh!quiet,it\'asecret!',
-//     SESS_LIFETIME = TWO_HOURS
-// } = process.env
 
 const IN_PROD = process.env.NODE_ENV === 'production'
 
@@ -33,15 +27,12 @@ db.on('error', (error) => console.log(error));
 db.once('open', () => console.log("Connected to database"));
 
 /** APP */
-app.use(cors());
+app.use(cors({ credentials: true, origin: true }));
 app.use(express.static('public'));
 app.use(express.json());
+app.use(express.urlencoded({extended: true}));
 
 /** HER SKAL SESSION VÆRE */
-
-// var FileStore = require('session-file-store')(session);
- 
-// var fileStoreOptions = {};
 
 // Denne skal kun være der når koden skal op og ligge på heruko
 // app.set('trust proxy', 1)
