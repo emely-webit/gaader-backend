@@ -35,7 +35,7 @@ app.use(express.urlencoded({extended: true}));
 /** HER SKAL SESSION VÆRE */
 
 // Denne skal kun være der når koden skal op og ligge på heruko
-// app.set('trust proxy', 1)
+app.set('trust proxy', 1);
 
 app.use(session({
     name: process.env.SESS_NAME,
